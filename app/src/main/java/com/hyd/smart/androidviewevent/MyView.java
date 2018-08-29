@@ -2,9 +2,14 @@ package com.hyd.smart.androidviewevent;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.widget.RelativeLayout;
 
 public class MyView extends RelativeLayout {
+
+    private static final String TAG = "MyView";
+
     public MyView(Context context) {
         super(context);
     }
@@ -17,6 +22,22 @@ public class MyView extends RelativeLayout {
         super(context, attrs, defStyleAttr);
     }
 
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                float y = getY();
+                float x = getX();
+//                Log.i(TAG,"onTouchEvent down  x ="+x+",y="+y);
+                init();
+                break;
+
+        }
+        return super.onTouchEvent(event);
+
+    }
 
     public void init() {
         //左上角横坐标
@@ -40,6 +61,8 @@ public class MyView extends RelativeLayout {
         //view左上角相对于父容器的偏移量（是相对于父容器的坐标）  默认值为0
         float translationX = getTranslationX();
         float translationY = getTranslationY();
+
+        Log.i(TAG,"left = "+left+",right="+right+",top="+top+",bottom="+bottom+",width="+width+",height="+height+",x="+x+",y="+y+",translationX+"+translationX+",translationY+"+translationY);
 
         /**
          * 这几个参数的换算关系
