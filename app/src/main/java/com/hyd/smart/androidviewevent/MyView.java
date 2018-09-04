@@ -26,7 +26,7 @@ public class MyView extends RelativeLayout {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
-        switch (event.getAction()){
+            switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
                 float y = getY();
                 float x = getX();
